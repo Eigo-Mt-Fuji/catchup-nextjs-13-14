@@ -11,6 +11,12 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## 実行環境
+
+- nodejs 16.x or higher
+- TypeScript 5.1.3 or higher
+- @types/react 18.2.8 or higher
+
 ## ディレクトリ構成
 
 ```
