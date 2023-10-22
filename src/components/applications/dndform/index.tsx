@@ -68,7 +68,7 @@ const DnDForm = () => {
                 </p>
             </Tooltip>
             <input {...getInputProps()} />
-        <div>{filesList}</div>
+            <div>{filesList}</div>
         </div>
     </>
 
