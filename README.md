@@ -76,9 +76,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 考えること
 
 - ページ単位
-- コンポーネント
-- uiライブラリ
-- スタイル定義カラデザ
-- イベント
+- コンポーネント定義・管理
+- uiライブラリ選定・応用
+- スタイル定義・管理
+- イベントハンドリング・イベント管理
 - ステート管理
+- api呼び出し
 - ユーザエージェント
