@@ -2,7 +2,9 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import { redirect } from 'next/navigation'
 import { revalidatePath, revalidateTag } from 'next/cache'
-
+import Component from '@/components/applications/sample/index'
+import MyForm from '@/components/applications/myform/index'
+import DnDForm from '@/components/applications/dndform'
 async function searchOSM(q: string) {
   // https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating
   // https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#fetching-data-where-its-needed
@@ -60,10 +62,9 @@ export default async function SamplePage() {
   /** Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`. at input at form at main */
   return (
     <main className={styles.main}>
-      <form action={create}>
-        <input type="text" value="hoge" name="todo" />
-        <button>送信</button>
-      </form>
+      <MyForm/>
+      <Component />
+      <DnDForm></DnDForm>
       <div>{message}</div>
       <div className={styles.description}>
         <span>Lat: </span><span>{lat}</span><span>,</span><span>Lon: </span><span>{lon}</span>
