@@ -73,10 +73,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-ページ
-コンポーネント
-uiライブラリ
-スタイル定義カラデザ
-イベント
-ステート管理
-ユーザエージェント
+## 考えること
+
+- ページ単位
+- コンポーネント
+- uiライブラリ
+- スタイル定義カラデザ
+- イベント
+- ステート管理
+- ユーザエージェント
