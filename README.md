@@ -81,5 +81,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - スタイル定義・管理
 - イベントハンドリング・イベント管理
 - ステート管理
+  - 普段使ってない定義済みフック
+  - 独自のフック
+  - Reactコンテキスト
+  - ストレージ
 - api呼び出し
 - ユーザエージェント
