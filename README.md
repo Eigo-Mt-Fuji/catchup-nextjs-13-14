@@ -72,3 +72,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 考えること
+
+- ページ単位
+- コンポーネント定義・管理
+- uiライブラリ選定・応用
+- スタイル定義・管理
+- イベントハンドリング・イベント管理
+- ステート管理
+  - 普段使ってない定義済みフック
+  - 独自のフック
+  - Reactコンテキスト
+  - ストレージ
+- api呼び出し
+- ユーザエージェント
