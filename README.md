@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 実行環境
 
-- nodejs 16.x or higher
+- nodejs 18.17 or higher
 - TypeScript 5.1.3 or higher
 - @types/react 18.2.8 or higher
 
@@ -56,6 +56,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
           ├─ types（型定義ファイルがないライブラリ用）
           └─ test
 ```
+
+
+- components/applicationsコンポーネント作成訓練
+  - 組み込みhookを使ってみる練習
+      - useState
+      - useEffect
+      - useCallback
+  - 組み込みhookを組み合わせて独自のhookを実装する練習
+  - component + hookという構成に近づける訓練
+- stores/context
+- themes/mui訓練
+- modules/generated(OpenAPIによって生成されたコード)取り扱い
+- sst.config取り扱い訓練
 
 
 ## Learn More
