@@ -1,0 +1,35 @@
+name: run
+on:
+  pull_request:
+jobs:
+  review_for_me:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha }}
+
+    - name: Use node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Review
+      env:
+        OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd ./scripts/reviewer/
+        npm install
+        npm run build
+        git diff --name-only origin/${{ github.base_ref }}..HEAD ../../src | grep -e '\.tsx$' -e '\.ts$' | while read file; do
+          git diff origin/${{ github.base_ref }}..HEAD "${file}"
+          review_result=$(git diff origin/${{ github.base_ref }}..HEAD "../../${file}" | npm run start "../../${file}")
+          gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}"
+        done
