@@ -1,9 +1,9 @@
 import fs from 'fs'; 
+import {rtrim} from './trim';
 
 export default async function read() {
     let codeSnippet = "";
     for await (const chunk of process.stdin) {
-      process.stdout.write(chunk);
       codeSnippet += chunk;
     }
     const files = process.argv.slice(2)
@@ -18,6 +18,6 @@ export default async function read() {
     }
     return {
       files,
-      codeSnippet,
+      codeSnippet : rtrim(codeSnippet),
     }
   }
