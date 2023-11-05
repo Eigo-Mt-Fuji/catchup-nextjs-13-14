@@ -1,0 +1,16 @@
+{
+  "name": "reviewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc --outDir ./out",
+    "start": "node ./out/index.js",
+    "tsc": "tsc --help"
+  },
+  "devDependencies": {
+    "typescript":"^5.2.2"
+  },
+  "author": "efg.river",
+  "license": "MIT"
+}
