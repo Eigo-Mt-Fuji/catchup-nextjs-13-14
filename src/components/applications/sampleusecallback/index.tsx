@@ -8,7 +8,7 @@ export interface SampleUseCallbackProps {
 
 export default function SampleUsecallback(props: SampleUseCallbackProps) {
     const [count, setCount] = useState<number>(props.defaultCount)
-    const increment = useCallback((cnt: number) => setCount(cnt + 1), [props.defaultCount])
+    const increment = useCallback((cnt: number) => setCount(cnt + 1), [])
     return (
         <div>
             <p>Count: {count}</p>
