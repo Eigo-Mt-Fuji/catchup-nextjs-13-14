@@ -1,3 +1,3 @@
-export function rtrim(str: String) : String {
+export function rtrim(str: string) : string {
     return str.replace(/\r?\n$/g, "")
 }
