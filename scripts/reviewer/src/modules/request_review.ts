@@ -1,19 +1,19 @@
 
 import OpenAI from 'openai';
-import {ChatCompletionMessage, ChatCompletionRole} from 'openai/resources/index';
+import {ChatCompletionMessageParam, ChatCompletionRole} from 'openai/resources/index';
 import {ReviewerAppConfig} from './config';
 
-export function generateChatCompletionMessages(q: string) :Array<ChatCompletionMessage>{
+export function generateChatCompletionMessages(q: string) :Array<ChatCompletionMessageParam>{
     const role: ChatCompletionRole = 'user'
     return [
         {
             content: q,
             role,
-        } as ChatCompletionMessage,
+        } as ChatCompletionMessageParam,
     ]
 }
 // ChatGPT API にコードレビュー依頼のリクエストをして結果を受け取る
-export default async function requestReview(config: ReviewerAppConfig, messages: Array<ChatCompletionMessage>) :Promise<String|null>{
+export default async function requestReview(config: ReviewerAppConfig, messages: Array<ChatCompletionMessageParam>) :Promise<String|null>{
     const openai = new OpenAI({
         apiKey: config.OPENAI_API_KEY,
     });
