@@ -4,6 +4,7 @@ on:
 jobs:
   review_for_me:
     runs-on: ubuntu-latest
+    environment: default
     strategy:
       matrix:
         node-version: ['21.x']
