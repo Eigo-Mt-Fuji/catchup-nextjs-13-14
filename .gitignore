@@ -36,6 +36,8 @@ next-env.d.ts
 scripts/reviewer/node_modules
 scripts/reviewer/out
 
+/*.zip
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -57,4 +59,3 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
-/*.zip
