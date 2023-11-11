@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export'
     // Forms enable you to create and update data in web applications. Next.js provides a powerful way to handle form submissions and data mutations using Server Actions.
     // serverActions: true,
 }
