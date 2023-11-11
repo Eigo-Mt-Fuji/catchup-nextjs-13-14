@@ -1,13 +1,14 @@
 
 import OpenAI from 'openai';
-import {ChatCompletionMessage} from 'openai/resources/index';
+import {ChatCompletionMessage, ChatCompletionRole} from 'openai/resources/index';
 import {ReviewerAppConfig} from './config';
 
 export function generateChatCompletionMessages(q: string) :Array<ChatCompletionMessage>{
+    const role: ChatCompletionRole = 'user'
     return [
         {
             content: q,
-            role: "user",
+            role,
         } as ChatCompletionMessage,
     ]
 }
