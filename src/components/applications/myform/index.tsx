@@ -3,7 +3,7 @@
 // cannot import a Server Component into a Client Component: https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns
 // Supported Pattern: Passing Server Components to Client Components as Props
 // Event handlers cannot be passed to Client Component
-export default (props: any) => {
+export default function MyForm(props: any) {
     const onChange = (e: any) => {
         window.console.log()
     }

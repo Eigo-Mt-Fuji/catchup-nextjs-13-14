@@ -6,7 +6,7 @@ export interface SampleStateProps {
     defaultYesNo:boolean
 }
 
-export default (props: SampleStateProps) => {
+export default function SampleState(props: SampleStateProps) {
     const [yesNo, setYesNo] = useState<boolean>(props.defaultYesNo)
     return (
         <form>

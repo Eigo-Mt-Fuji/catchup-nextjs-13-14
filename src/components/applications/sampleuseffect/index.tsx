@@ -8,7 +8,7 @@ export interface SampleUseEffectProps {
     defaultCount: number
 }
 
-export default (props: SampleUseEffectProps) => {
+export default function SampleUseeffect(props: SampleUseEffectProps) {
     const [count, setCount] = useState<number>(props.defaultCount)
     useEffect(() => {
         document.title = `Count: ${count}`

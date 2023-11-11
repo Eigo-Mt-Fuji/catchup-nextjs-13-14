@@ -10,14 +10,14 @@ const DnDForm = () => {
   const [files, setFiles] = React.useState([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    setFiles(acceptedFiles.map(file => Object.assign(file, {
+    setFiles(acceptedFiles.map((file: File) => Object.assign(file, {
       preview: URL.createObjectURL(file)
     })));
   }, []);
 
   const {getRootProps, getInputProps} = useDropzone({onDrop});
 
-  const filesList = files.map(file => (
+  const filesList = files.map((file: File) => (
     <div key={file.name}>
       {file.name} - {file.size} bytes, last modified: {new Date(file.lastModified).toLocaleDateString()}
     </div>
