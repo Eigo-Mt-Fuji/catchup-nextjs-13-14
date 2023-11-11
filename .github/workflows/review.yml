@@ -30,6 +30,6 @@ jobs:
         npm run build
         git diff --name-only origin/${{ github.base_ref }}..HEAD ../../src | grep -e '\.tsx$' -e '\.ts$' | while read file; do
           git diff origin/${{ github.base_ref }}..HEAD "../../${file}"
-          review_result=$(git diff origin/${{ github.base_ref }}..HEAD "../../${file}" | npm run start ../../${file})
+          review_result=$(git diff origin/${{ github.base_ref }}..HEAD "../../${file}" | OPENAI_API_KEY="$OPENAI_API_KEY" npm run start ../../${file})
           gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}"
         done
