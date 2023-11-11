@@ -21,7 +21,7 @@ export default async function requestReview(config: ReviewerAppConfig, messages:
         model: 'gpt-3.5-turbo',
         messages: [
             {
-                role: "system",
+                role: 'system',
                 content: `
                 You must respect the following rules:
                 1. Please gather all necessary information from the internet as much as possible.
