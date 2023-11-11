@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 import {ChatCompletionMessage} from 'openai/resources/index';
 import {ReviewerAppConfig} from './config';
 
-export function generateChatCompletionMessages(q: String) :Array<ChatCompletionMessage>{
+export function generateChatCompletionMessages(q: string) :Array<ChatCompletionMessage>{
     return [
         {
             content: q,
