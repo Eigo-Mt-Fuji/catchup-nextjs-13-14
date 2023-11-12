@@ -1,4 +1,46 @@
 version: 1
+# Amplify CLI v1.0以降でプロビジョニングされたリポジトリに接続した場合
+# （amplify-vを実行してCLIバージョンを確認する）
+# Amplify Hostingは単一のワークフローでフロントエンドビルド, バックエンドデプロイを実施する仕組み
+# フロントエンド・バックエンドの定義（Amplify Hostingでのバックエンドとは？）
+# バックエンドリソース　＝ Amplify CLIでプロビジョニングされたAWSリソース全般
+# デプロイまたは自動的に更新します。
+# 既存のバックエンド環境を自分のブランチにポイントするか、
+# まったく新しい環境を作成することができます。 
+
+# step-by-step チュートリアルについては、「フルスタックデプロイメントの開始」を参照してください。
+# Amplify supports the automatic build-time generation of the Amplify config aws-exports.js file. By turning off full stack CI/CD deployments, you enable your app to autogenerate the aws-exports.js file and ensure that updates are not made to your backend at build-time.
+
+# Environment variables are key-value pairs that you can add to your application's settings to make them available to Amplify Hosting. As a best practice, you can use environment variables to expose application configuration data. All environment variables that you add are encrypted to prevent rogue access.
+# AWS_APP_ID
+# AWS_BRANCH
+# AWS_BRANCH_ARN
+# AWS_CLONE_URL
+# AWS_COMMIT_ID
+# AWS_JOB_ID
+# AWS_PULL_REQUEST_ID
+# _LIVE_UPDATES
+# USER_DISABLE_TESTS
+# AMPLIFY_FACEBOOK_CLIENT_ID
+# AMPLIFY_FACEBOOK_CLIENT_SECRET
+# AMPLIFY_GOOGLE_CLIENT_ID
+# AMPLIFY_GOOGLE_CLIENT_SECRET
+# AMPLIFY_AMAZON_CLIENT_ID
+# AMPLIFY_AMAZON_CLIENT_SECRET
+# AMPLIFY_DIFF_DEPLOY
+# AMPLIFY_DIFF_DEPLOY_ROOT
+# AMPLIFY_DIFF_BACKEND
+# AMPLIFY_BACKEND_PULL_ONLY
+# AMPLIFY_BACKEND_APP_ID
+# AMPLIFY_SKIP_BACKEND_BUILD
+# AMPLIFY_MONOREPO_APP_ROOT
+# _BUILD_TIMEOUT
+# AMPLIFY_USERPOOL_ID
+# AMPLIFY_WEBCLIENT_ID
+# AMPLIFY_NATIVECLIENT_ID
+# AMPLIFY_IDENTITYPOOL_ID
+# AMPLIFY_PERMISSIONS_BOUNDARY_ARN
+# AMPLIFY_DESTRUCTIVE_UPDATES
 backend:
   phases:
     build:
@@ -10,7 +52,9 @@ frontend:
     preBuild:
       commands:
         - npm ci
+        - npm run lint
     build:
+      # how to use build image public.ecr.aws/docker/nodejs:18.18 in amplify.yml
       commands:
         - npm run build
   artifacts:
