@@ -1,4 +1,5 @@
 'use client';
+
 import LoadMoreAction from '@/types/load-more-action';
 import {
     useCallback,
