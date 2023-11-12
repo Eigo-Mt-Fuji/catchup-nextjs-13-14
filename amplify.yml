@@ -54,6 +54,7 @@ frontend:
         - npm ci
         - npm run lint
     build:
+      # how to use build image public.ecr.aws/docker/nodejs:18.18 in amplify.yml
       commands:
         - npm run build
   artifacts:
