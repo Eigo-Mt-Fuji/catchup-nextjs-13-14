@@ -1,4 +1,8 @@
 
+## ワンタッチデプロイ
+
+[![Deploy](https://oneclick.amplifyapp.com/button.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/Eigo-Mt-Fuji/catchup-nextjs-13-14)
+
 ## Getting Started
 
 ```bash
