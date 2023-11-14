@@ -8,7 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-export default function QuizQuestionItem({ question, index }: { question: QuizQuestion, index: number }) {
+export default function QuizQuestionItem({ question, index, onChanged }: { question: QuizQuestion, index: number, onChanged: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
     const [answer, setAnswer] = useState<string|undefined>();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAnswer(event.target.value);
