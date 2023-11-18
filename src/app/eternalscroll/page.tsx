@@ -13,7 +13,6 @@ async function getPosts(offset: number) {
 }
 async function loadMorePost(offset: number = 0) {
     'use server';
-    console.log("loadMorePost offset=" + offset);
     const posts = await getPosts(offset);
   
     const nextOffset = posts.length >= POST_LIST_PAGE_SIZE ? offset + POST_LIST_PAGE_SIZE : null;
