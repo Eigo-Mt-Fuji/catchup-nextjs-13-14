@@ -33,6 +33,7 @@ jobs:
           git diff origin/${{ github.base_ref }}..HEAD "../../${file}"
           review_result=$(git diff origin/${{ github.base_ref }}..HEAD "../../${file}" | OPENAI_API_KEY="$OPENAI_API_KEY" npm run start ../../${file})
           export HISTORY_ID=$(curl -XPOST -H "Content-Type: application/json" -H "x-api-key: $INTERNAL_API_KEY" https://www.efgriver.com/internal/reviewer/history -d "{\"comment\":\"$review_result\"}" | jq -rc ".id")
-          export EVAL_ACTION_MD_SNIPPET="[![Good](https://www.efgriver.com/good.svg)](https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID)"
+          export EVAL_ACTION_MD_SNIPPET="<a href=\"https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID\"><img src=\"https://www.efgriver.com/good.svg\" width=\"30\" alt=\"Good\" /></a>"
           gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}<br/> $EVAL_ACTION_MD_SNIPPET"
         done
+
