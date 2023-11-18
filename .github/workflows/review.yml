@@ -32,10 +32,7 @@ jobs:
         git diff --diff-filter=d  --name-only origin/${{ github.base_ref }}..HEAD ../../src | grep -e '\.tsx$' -e '\.ts$' | while read file; do
           git diff origin/${{ github.base_ref }}..HEAD "../../${file}"
           review_result=$(git diff origin/${{ github.base_ref }}..HEAD "../../${file}" | OPENAI_API_KEY="$OPENAI_API_KEY" npm run start ../../${file})
-          cat <<EOF > body.json
-          {"comment":"$review_result"}
-          EOF 
-          export HISTORY_ID=$(curl -XPOST -H "x-api-key: $INTERNAL_API_KEY" https://www.efgriver.com/internal/reviewer/history -d@./body.json | jq -rc ".id")
+          export HISTORY_ID=$(curl -XPOST -H "Content-Type: application/json" -H "x-api-key: $INTERNAL_API_KEY" https://www.efgriver.com/internal/reviewer/history -d "{\"comment\":\"$review_result\"}" | jq -rc ".id")
           export EVAL_ACTION_MD_SNIPPET="[![Good](https://www.efgriver.com/good.svg)](https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID)"
           gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}<br/> $EVAL_ACTION_MD_SNIPPET"
         done
