@@ -76,8 +76,7 @@ export default function QuizForm() {
                     questions.map((question, index) => 
                     {
                         return (
-                            <QuizQuestionItem key={question.id} question={question} index={index} onChanged={(e)=> {}}>
-                            </QuizQuestionItem>
+                            <QuizQuestionItem key={question.id} question={question} index={index} onChanged={(e)=> {}} />
                         )
                     })
                 }

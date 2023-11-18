@@ -15,8 +15,11 @@ jobs:
       with:
         fetch-depth: 0
         ref: ${{ github.event.pull_request.head.sha }}
-
-    - name: Use node.js ${{ matrix.node-version }}
+  #  - uses: aws-actions/configure-aws-credentials@v1
+  #     with:
+  #       role-to-assume: arn:aws:iam::047980477351:role/prdFxReportGithubWorkflow
+  #       aws-region: ap-northeast-1
+   - name: Use node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
@@ -64,11 +67,12 @@ jobs:
       # コミットのコメント
       # ブランチ名
       # PullRequest名
+
     - name: Review
       env:
         OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        EVAL_ACTION_MD_SNIPPET: "[![Deploy](https://oneclick.amplifyapp.com/button.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/Eigo-Mt-Fuji/catchup-nextjs-13-14)"
+        INTERNAL_API_KEY: ${{secrets.API_KEY}}
       run: |
         cd ./scripts/reviewer/
         echo $OPENAI_API_KEY
@@ -77,5 +81,10 @@ jobs:
         git diff --diff-filter=d  --name-only origin/${{ github.base_ref }}..HEAD ../../src | grep -e '\.tsx$' -e '\.ts$' | while read file; do
           git diff origin/${{ github.base_ref }}..HEAD "../../${file}"
           review_result=$(git diff origin/${{ github.base_ref }}..HEAD "../../${file}" | OPENAI_API_KEY="$OPENAI_API_KEY" npm run start ../../${file})
+          cat <<EOF > body.json
+          {"comment":"$review_result"}
+          EOF 
+          export HISTORY_ID=$(curl -XPOST -H "x-api-key: $INTERNAL_API_KEY" https://www.efgriver.com/internal/reviewer/history -d@./body.json | jq -rc ".id")
+          export EVAL_ACTION_MD_SNIPPET="[![Good](https://www.efgriver.com/good.svg)](https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID)"
           gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}<br/> $EVAL_ACTION_MD_SNIPPET"
         done
