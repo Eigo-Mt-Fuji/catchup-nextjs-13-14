@@ -17,8 +17,8 @@ export default function QuizQuestionItem({ question, index, onChanged }: { quest
         <FormControl>
             <FormLabel id="demo-radio-buttons-group-label"><span className="question-label">Q#{index}. {question.question}</span></FormLabel>
             <RadioGroup aria-labelledby="demo-controlled-radio-buttons-group" name={`question${index}`} value={answer} onChange={handleChange}>
-                {question.answers.map((a, _) => {
-                    return (<FormControlLabel value={a} control={<Radio />} label={a} />)
+                {question.answers.map((a, index) => {
+                    return (<FormControlLabel key={question.id + "_answer_" + index} value={a} control={<Radio />} label={a} />)
                 })}
             </RadioGroup>
         </FormControl>
