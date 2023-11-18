@@ -56,6 +56,8 @@ frontend:
     build:
       # how to use build image public.ecr.aws/docker/nodejs:18.18 in amplify.yml
       commands:
+        # ssr environment variable: https://docs.aws.amazon.com/amplify/latest/userguide/ssr-environment-variables.html
+        - env | grep -e API_KEY -e REVIEW_HISTORY_TABLE_NAME >> .env
         - npm run build
   artifacts:
     baseDirectory: .next
