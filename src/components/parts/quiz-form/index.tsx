@@ -72,7 +72,15 @@ export default function QuizForm() {
             <div>{value.theme}のクイズたち</div>
             <div className="quiz">
                 <LinearProgress value={currentQuestion / questions.length}/>
-                {questions.map((question, index) => <QuizQuestionItem question={question} index={index} onChanged={(e)=> { /*update answer state*/}}></QuizQuestionItem>} />)}
+                {
+                    questions.map((question, index) => 
+                    {
+                        return (
+                            <QuizQuestionItem key={question.id} question={question} index={index} onChanged={(e)=> {}}>
+                            </QuizQuestionItem>
+                        )
+                    })
+                }
                 <ButtonGroup variant="contained" aria-label="contained button group">
                     <Button color="primary">これでどうだ</Button>
                     <Button color="secondary">やっぱなし</Button>
