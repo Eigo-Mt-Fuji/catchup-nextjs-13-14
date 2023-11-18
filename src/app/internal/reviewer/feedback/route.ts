@@ -4,11 +4,6 @@ import { DynamoDBClient, GetItemCommand, GetItemCommandInput, PutItemCommand, Pu
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-    const validateApiKeyResponse : NextResponse|null = validateApiKey(req);
-    if (validateApiKeyResponse != null) {
-        return validateApiKeyResponse
-    }
-
     const { searchParams } = new URL(req.url)
     const historyId: string|null = searchParams.get('id')
     if (historyId == null) {
