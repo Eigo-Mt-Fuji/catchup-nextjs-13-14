@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { generateId } from "@/modules/generate-id";
 import { validateApiKey } from "@/modules/validate-api-key";
 import { DynamoDBClient, PutItemCommand, PutItemCommandInput } from "@aws-sdk/client-dynamodb";
+import { createDynamoDBClient } from "@/modules/dynamodb-driver";
 
 // POST /internal/reviewer/history
 export async function POST(req: Request) {
@@ -19,8 +20,11 @@ export async function POST(req: Request) {
     
         // make next.js api route source code: generate random nanoid for history
         const historyId: string = generateId()
-    
-        const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+
+        const client: DynamoDBClient| undefined = createDynamoDBClient();
+        if (client == undefined) {
+            return NextResponse.json({"status": "error", "message": "internal error"}, {status: 500})
+        }
         const input: PutItemCommandInput = {
             TableName: process.env.REVIEW_HISTORY_TABLE_NAME,
             Item: {
