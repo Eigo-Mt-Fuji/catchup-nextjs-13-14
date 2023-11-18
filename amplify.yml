@@ -58,6 +58,10 @@ frontend:
       commands:
         # ssr environment variable: https://docs.aws.amazon.com/amplify/latest/userguide/ssr-environment-variables.html
         - env | grep -e API_KEY -e REVIEW_HISTORY_TABLE_NAME >> .env
+        # workaround: Could not load credentials from any provider 
+        # https://zenn.dev/redgosho/articles/aedfc2b94c0759
+        # https://github.com/aws-amplify/amplify-hosting/issues/3205
+        - env | grep -e APP_AWS_REGION -e APP_AWS_ACCESS_KEY_ID -e APP_AWS_SECRET_ACCESS_KEY >> .env
         - npm run build
   artifacts:
     baseDirectory: .next

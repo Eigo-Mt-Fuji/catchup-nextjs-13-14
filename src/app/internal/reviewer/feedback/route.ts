@@ -1,3 +1,4 @@
+import { createDynamoDBClient } from '@/modules/dynamodb-driver';
 import { validateApiKey } from '@/modules/validate-api-key';
 import { DynamoDBClient, GetItemCommand, GetItemCommandInput, PutItemCommand, PutItemCommandInput } from '@aws-sdk/client-dynamodb';
 import { NextResponse } from 'next/server';
@@ -16,8 +17,10 @@ export async function POST(req: Request) {
 
     try {
 
-        const client = new DynamoDBClient({ region: process.env.AWS_REGION });
-
+        const client: DynamoDBClient| undefined = createDynamoDBClient();
+        if (client == undefined) {
+            return NextResponse.json({"status": "error", "message": "internal error"}, {status: 500})
+        }
         const getCommandInput: GetItemCommandInput = {
             TableName: process.env.REVIEW_HISTORY_TABLE_NAME,
             Key: {
