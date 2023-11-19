@@ -69,7 +69,7 @@ export default function QuizForm() {
     // form for answering questions
     return (
         <>
-            <div>{value.theme}のクイズたち</div>
+            <div>{value.themeText}のクイズたち</div>
             <div className="quiz">
                 <LinearProgress value={currentQuestion / questions.length}/>
                 {
