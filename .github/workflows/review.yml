@@ -37,7 +37,7 @@ jobs:
           curl -XPOST -H "Content-Type: application/json" -H "x-api-key: $INTERNAL_API_KEY" https://www.efgriver.com/internal/reviewer/history -d@body.json > hoge.json
           cat hoge.json
           export HISTORY_ID=$(cat hoge.json | jq -rc ".id")
-          export EVAL_ACTION_MD_SNIPPET="<a target="_blank" href=\"https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID\"><img src=\"https://www.efgriver.com/good.svg\" width=\"30\" alt=\"Good\" /></a>"
+          export EVAL_ACTION_MD_SNIPPET="<a href=\"#\" onclick=\"fetch('https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID',{method:'POST'});\"><img src=\"https://www.efgriver.com/good.svg\" width=\"30\" alt=\"Good\" /></a>"
           gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}<br/> $EVAL_ACTION_MD_SNIPPET"
         done
 
