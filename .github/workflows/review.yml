@@ -26,7 +26,6 @@ jobs:
         INTERNAL_API_KEY: ${{secrets.API_KEY}}
       run: |
         cd ./scripts/reviewer/
-        echo $OPENAI_API_KEY
         npm install
         npm run build
         git diff --diff-filter=d  --name-only origin/${{ github.base_ref }}..HEAD ../../src | grep -e '\.tsx$' -e '\.ts$' | while read file; do
