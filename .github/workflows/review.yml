@@ -4,6 +4,7 @@ on:
 jobs:
   review_for_me:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.commits.*.message, '[skip ci]') }}
     environment: default
     strategy:
       matrix:
