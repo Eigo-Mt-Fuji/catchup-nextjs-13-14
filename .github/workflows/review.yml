@@ -40,3 +40,5 @@ jobs:
           export EVAL_ACTION_MD_SNIPPET="<a href=\"javascript:void(0)\" onclick=\"fetch('https://www.efgriver.com/internal/reviewer/feedback?id=$HISTORY_ID',{method:'POST'}); return false;\"><img src=\"https://www.efgriver.com/good.svg\" width=\"30\" alt=\"Good\" /></a>"
           gh pr comment ${{ github.event.pull_request.number }} --body "${review_result}<br/> $EVAL_ACTION_MD_SNIPPET"
         done
+
+# XSS対策でonclickイベントは発火しないので、代わりの方法を考えるべし
