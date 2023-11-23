@@ -63,3 +63,4 @@ amplifytools.xcconfig
 terraform.plan
 terraform.tfstate.d
 .env
+storybook-static
