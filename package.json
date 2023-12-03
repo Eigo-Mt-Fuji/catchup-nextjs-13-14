@@ -11,11 +11,14 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.7",
     "@aws-sdk/client-dynamodb": "^3.454.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.14",
     "@mui/joy": "^5.0.0-beta.14",
+    "@mui/system": "^5.14.18",
+    "@mui/x-data-grid": "^6.18.2",
     "@storybook/manager-api": "^7.5.3",
     "@storybook/theming": "^7.5.3",
     "@types/node": "20.5.8",
@@ -23,6 +26,7 @@
     "@types/react-dom": "18.2.7",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "graphql-tag": "^2.12.6",
     "nanoid": "^5.0.3",
     "next": "^14.0.2",
     "react": "18.2.0",
